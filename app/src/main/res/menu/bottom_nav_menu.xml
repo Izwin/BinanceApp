@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/bidsFragment" android:title="Bids" android:icon="@drawable/ic_baseline_add_circle_24"/>
+    <item android:id="@+id/asksFragment" android:title="Asks" android:icon="@drawable/ic_baseline_remove_circle_24"/>
+    <item android:id="@+id/detailsFragment" android:title="Details" android:icon="@drawable/ic_baseline_info_24"/>
+</menu>
