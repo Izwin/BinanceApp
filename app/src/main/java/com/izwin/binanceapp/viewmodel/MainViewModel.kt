@@ -9,26 +9,34 @@ import kotlinx.coroutines.*
 
 class MainViewModel : ViewModel() {
     val bidsAndAsksModel = MutableLiveData<BidsAndAsksModel>()
-    var isRequestsSending = false
+    val isLoading = MutableLiveData(true)
+    private var symbol = "BTCUSDT"
+    private var getDepthJob: Job? = null
 
     private fun getDepth(){
-        runBlocking {
-            async {
-                bidsAndAsksModel.postValue(BinanceRetrofitClient.create()!!.getDepth("BNBBTC"))
-            }.await()
+        viewModelScope.launch {
+            bidsAndAsksModel.postValue(BinanceRetrofitClient.create()!!.getDepth(symbol))
+            isLoading.postValue(false)
         }
     }
     fun startRequestSending(interval: Int){
-        isRequestsSending = true
-        viewModelScope.launch {
-            while(isRequestsSending){
+        stopRequestSending()
+        getDepthJob = viewModelScope.launch{
+            while(true){
                 getDepth()
                 delay(interval.toLong())
             }
         }
     }
     fun stopRequestSending(){
-        isRequestsSending = false
+        getDepthJob?.cancel()
+    }
+    fun changeSymbol(symbol: String){
+        stopRequestSending()
+        this.symbol = symbol
+        getDepth()
+        isLoading.postValue(true)
+        startRequestSending(1500)
     }
 
 }

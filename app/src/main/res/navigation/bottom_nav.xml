@@ -10,17 +10,45 @@
         android:name="com.izwin.binanceapp.view.AsksFragment"
         android:label="fragment_asks"
         tools:layout="@layout/fragment_asks" >
+        <action
+            android:id="@+id/action_asksFragment_to_bidsFragment"
+            app:destination="@id/bidsFragment"
+            app:enterAnim="@anim/slide_to_right"
+            app:exitAnim="@anim/slide_right_to_right"
+            app:popEnterAnim="@anim/slide_left_to_left"
+            app:popExitAnim="@anim/slide_to_left"/>
+        <action
+            android:id="@+id/action_asksFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_to_left"
+            app:exitAnim="@anim/slide_left_to_left"
+            app:popEnterAnim="@anim/slide_right_to_right"
+            app:popExitAnim="@anim/slide_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/bidsFragment"
         android:name="com.izwin.binanceapp.view.BidsFragment"
         android:label="fragment_bids"
         tools:layout="@layout/fragment_bids" >
+        <action
+            android:id="@+id/action_bidsFragment_to_asksFragment"
+            app:destination="@id/asksFragment"
+            app:enterAnim="@anim/slide_to_left"
+            app:exitAnim="@anim/slide_left_to_left"
+            app:popEnterAnim="@anim/slide_right_to_right"
+            app:popExitAnim="@anim/slide_to_right"/>
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.izwin.binanceapp.view.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_asksFragment"
+            app:destination="@id/asksFragment"
+            app:enterAnim="@anim/slide_to_right"
+            app:exitAnim="@anim/slide_right_to_right"
+            app:popEnterAnim="@anim/slide_left_to_left"
+            app:popExitAnim="@anim/slide_to_left"/>
     </fragment>
 </navigation>
