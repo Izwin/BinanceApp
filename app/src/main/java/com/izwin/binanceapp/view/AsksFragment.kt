@@ -21,6 +21,7 @@ class AsksFragment : SwipeableFragment(R.layout.fragment_asks) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        rec_view.setOnTouchListener(swipeListener)
         rec_view.layoutManager = LinearLayoutManager(requireContext())
         rec_view.adapter = adapter
 

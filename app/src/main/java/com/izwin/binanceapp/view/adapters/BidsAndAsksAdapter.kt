@@ -12,14 +12,14 @@ class BidsAndAsksAdapter(private val layout: Int, private val slotInfoList: Arra
     RecyclerView.Adapter<BidsAndAsksAdapter.BinanceViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BinanceViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(layout,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
         return BinanceViewHolder(view)
     }
 
-    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: BinanceViewHolder, position: Int) {
-        if (position%2==0) holder.itemView.setBackgroundColor(R.color.foreground)
-        else{holder.itemView.setBackgroundColor(R.color.backround)}
+        if (position % 2 == 0) holder.itemView.setBackgroundResource(R.color.foreground)
+        else holder.itemView.setBackgroundResource(R.color.backround)
+
         val slot = slotInfoList[position]
 
         val price = slot[0].toDouble()
@@ -29,17 +29,19 @@ class BidsAndAsksAdapter(private val layout: Int, private val slotInfoList: Arra
         holder.amount.text = "%.6f".format(amount)
         holder.price.text = "%.6f".format(price)
         holder.total.text = "%.6f".format(total)
+
     }
 
     override fun getItemCount() = slotInfoList.size
 
-    fun editList(list: List<List<String>>){
+    fun editList(list: List<List<String>>) {
         slotInfoList.clear()
         slotInfoList.addAll(list)
-        notifyItemRangeChanged(0,list.size)
+        notifyItemRangeChanged(0, list.size)
     }
 
-    class BinanceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+
+    class BinanceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val total = itemView.total
         val amount = itemView.amount
         val price = itemView.price

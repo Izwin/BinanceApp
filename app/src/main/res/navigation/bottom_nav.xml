@@ -13,10 +13,8 @@
         <action
             android:id="@+id/action_asksFragment_to_bidsFragment"
             app:destination="@id/bidsFragment"
-            app:enterAnim="@anim/slide_to_right"
-            app:exitAnim="@anim/slide_right_to_right"
-            app:popEnterAnim="@anim/slide_left_to_left"
-            app:popExitAnim="@anim/slide_to_left"/>
+            app:enterAnim="@anim/slide_right_to_right"
+            app:exitAnim="@anim/slide_to_right"/>
         <action
             android:id="@+id/action_asksFragment_to_detailsFragment"
             app:destination="@id/detailsFragment"
@@ -46,9 +44,8 @@
         <action
             android:id="@+id/action_detailsFragment_to_asksFragment"
             app:destination="@id/asksFragment"
-            app:enterAnim="@anim/slide_to_right"
-            app:exitAnim="@anim/slide_right_to_right"
-            app:popEnterAnim="@anim/slide_left_to_left"
-            app:popExitAnim="@anim/slide_to_left"/>
+            app:enterAnim="@anim/slide_right_to_right"
+            app:exitAnim="@anim/slide_to_right"
+/>
     </fragment>
 </navigation>

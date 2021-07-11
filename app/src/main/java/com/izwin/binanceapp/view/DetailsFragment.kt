@@ -22,6 +22,7 @@ class DetailsFragment : SwipeableFragment(R.layout.fragment_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        rec_view.setOnTouchListener(swipeListener)
         rec_view.layoutManager = LinearLayoutManager(requireContext())
         rec_view.adapter = adapter
 
@@ -44,11 +45,10 @@ class DetailsFragment : SwipeableFragment(R.layout.fragment_details) {
     }
 
     override fun onSwipeLeft() {
-        findNavController().navigate(R.id.action_asksFragment_to_detailsFragment)
     }
 
     override fun onSwipeRight() {
-        findNavController().navigate(R.id.action_asksFragment_to_bidsFragment)
+        findNavController().navigate(R.id.action_detailsFragment_to_asksFragment)
     }
 
     override fun onPause() {

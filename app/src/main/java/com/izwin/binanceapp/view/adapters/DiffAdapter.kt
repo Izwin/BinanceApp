@@ -19,11 +19,9 @@ class DiffAdapter(private val layout: Int, private var bidsAndAsks: BidsAndAsksM
         val view = LayoutInflater.from(parent.context).inflate(layout,parent,false)
         return DiffViewHolder(view)
     }
-
-    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: DiffViewHolder, position: Int) {
-        if (position%2==0) holder.itemView.setBackgroundColor(R.color.foreground)
-        else{holder.itemView.setBackgroundColor(R.color.backround)}
+        if (position % 2 == 0) holder.itemView.setBackgroundResource(R.color.foreground)
+        else holder.itemView.setBackgroundResource(R.color.backround)
 
         val bidPrice = bidsAndAsks.bids[position][0].toDouble()
         val askPrice = bidsAndAsks.asks[position][0].toDouble()
@@ -40,12 +38,12 @@ class DiffAdapter(private val layout: Int, private var bidsAndAsks: BidsAndAsksM
         holder.bid_diff.text = if (bidDiff!=null) "%.6f".format(bidDiff) else "No Data"
 
         if (bidDiff != null) {
-            if (bidDiff>0) holder.bid_diff.setTextColor(R.color.green)
-            if (bidDiff<0) holder.bid_diff.setTextColor(R.color.red)
+            if (bidDiff>0) holder.bid_diff.setTextColor(holder.itemView.resources.getColor(R.color.green))
+            if (bidDiff<0) holder.bid_diff.setTextColor(holder.itemView.resources.getColor(R.color.red))
         }
         if (askDiff != null) {
-            if (askDiff>0) holder.asks_diff.setTextColor(R.color.green)
-            if (askDiff<0) holder.asks_diff.setTextColor(R.color.red)
+            if (askDiff>0) holder.asks_diff.setTextColor(holder.itemView.resources.getColor(R.color.green))
+            if (askDiff<0) holder.asks_diff.setTextColor(holder.itemView.resources.getColor(R.color.red))
         }
     }
 

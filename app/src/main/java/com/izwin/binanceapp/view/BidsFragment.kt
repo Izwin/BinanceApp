@@ -1,6 +1,7 @@
 package com.izwin.binanceapp.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.AdapterView
@@ -13,6 +14,7 @@ import com.izwin.binanceapp.view.adapters.BidsAndAsksAdapter
 import com.izwin.binanceapp.view.listeners.OnSwipeTouchListener
 import com.izwin.binanceapp.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_bids.*
+import kotlin.math.log
 
 
 class BidsFragment : SwipeableFragment(R.layout.fragment_bids) {
@@ -21,6 +23,8 @@ class BidsFragment : SwipeableFragment(R.layout.fragment_bids) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        rec_view.setOnTouchListener(swipeListener)
 
         rec_view.layoutManager = LinearLayoutManager(requireContext())
         rec_view.adapter = adapter
@@ -44,11 +48,10 @@ class BidsFragment : SwipeableFragment(R.layout.fragment_bids) {
     }
 
     override fun onSwipeLeft() {
-        findNavController().navigate(R.id.action_asksFragment_to_detailsFragment)
+        findNavController().navigate(R.id.action_bidsFragment_to_asksFragment)
     }
 
     override fun onSwipeRight() {
-        findNavController().navigate(R.id.action_asksFragment_to_bidsFragment)
     }
 
     override fun onPause() {
