@@ -37,8 +37,8 @@ class BidsAndAsksAdapter(private val layout: Int, private val slotInfoList: Arra
     fun editList(list: List<List<String>>) {
         slotInfoList.clear()
         slotInfoList.addAll(list)
-        notifyItemRangeChanged(0, list.size)
-    }
+        notifyDataSetChanged()
+        }
 
 
     class BinanceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

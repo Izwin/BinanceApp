@@ -52,7 +52,7 @@ class DiffAdapter(private val layout: Int, private var bidsAndAsks: BidsAndAsksM
     fun editBidsAndAsks(bidsAndAsksModel: BidsAndAsksModel){
         lastChanges = if(this.bidsAndAsks.bids.isNotEmpty()) this.bidsAndAsks else null
         this.bidsAndAsks = bidsAndAsksModel
-        notifyItemRangeChanged(0,bidsAndAsksModel.bids.size)
+        notifyDataSetChanged()
     }
 
     class DiffViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
